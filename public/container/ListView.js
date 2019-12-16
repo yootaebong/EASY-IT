@@ -2,17 +2,20 @@ import React from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import ListItem from '../component/ListView/ListItem';
 
+
+
 const ListView = ({ itemList }) => (
     <View style={styles.container}>
         <FlatList
             data={itemList}
             renderItem={({ item }) => <ListItem
-                key={item.key}
+                id={item._id}
                 title={item.title}
-                description={item.description}
+                description={item.des}
             />}
-        />
 
+            keyExtractor={(item, index) => index.toString()}
+        />
     </View>
 );
 

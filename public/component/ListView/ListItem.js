@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const ListItem = ({ title, description }) => (
+const ListItem = ({ title, description, id }) => (
     <View style={styles.container}>
         <View style={styles.container_text}>
             <Text style={styles.title}>

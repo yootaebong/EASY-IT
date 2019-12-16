@@ -11,6 +11,6 @@ npm-debug.*
 web-build/
 web-report/
 server/*
-
+privateSet.js
 # macOS
 .DS_Store
