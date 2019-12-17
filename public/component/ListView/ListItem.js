@@ -5,10 +5,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexGrow: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         padding: 10,
-        marginLeft: 16,
-        marginRight: 16,
+        marginLeft: 8,
+        marginRight: 8,
         marginTop: 8,
         marginBottom: 8,
         backgroundColor: '#FFF',
@@ -24,31 +24,45 @@ const styles = StyleSheet.create({
 
     },
     title: {
-        fontSize: 16,
+        fontSize: 18,
         color: '#000',
+        marginBottom: 10
     },
     container_text: {
         flex: 1,
         flexDirection: 'column',
-        marginLeft: 12,
+        marginLeft: 5,
         justifyContent: 'center',
+
     },
     description: {
-        fontSize: 11,
+        fontSize: 10,
         fontStyle: 'italic',
+        marginBottom: 5
     },
+    lic_container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+
 });
 
-const ListItem = ({ title, description, id }) => (
+const ListItem = ({ title, description, img, creater, pubDate, url }) => (
     <View style={styles.container}>
         <View style={styles.container_text}>
             <Text style={styles.title}>
                 {title}
             </Text>
             <Text style={styles.description}>
-                {description}
+                {description + "..."}
             </Text>
+            <View style={styles.lic_container}>
+                <Text style={{ flex: 3, fontSize: 10 }}>{creater}</Text>
+                <Text style={{ flex: 3, fontSize: 10 }}>{pubDate}</Text>
+            </View>
         </View>
+
     </View>
 );
 

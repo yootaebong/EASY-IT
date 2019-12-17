@@ -1,18 +1,22 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, Text } from 'react-native';
+import { View, FlatList, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import ListItem from '../component/ListView/ListItem';
-
-
 
 const ListView = ({ itemList }) => (
     <View style={styles.container}>
         <FlatList
             data={itemList}
-            renderItem={({ item }) => <ListItem
-                id={item._id}
-                title={item.title}
-                description={item.des}
-            />}
+            renderItem={({ item }) =>
+                <TouchableOpacity onPress={() => goToUrl(item.url)}>
+                    <ListItem
+                        title={item.title}
+                        description={item.des}
+                        img={item.img}
+                        creater={item.creater}
+                        pubDate={item.pubDate}
+                    />
+                </TouchableOpacity >
+            }
 
             keyExtractor={(item, index) => index.toString()}
         />
@@ -24,6 +28,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
+
+let goToUrl = (url) => {
+    // console.log(url);
+    Linking.openURL(url);
+}
 
 export default ListView;
 
