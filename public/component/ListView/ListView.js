@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, StyleSheet, TouchableOpacity, Linking } from 'react-native';
-import ListItem from '../component/ListView/ListItem';
+import ListItem from './ListItem';
 
 const ListView = ({ itemList }) => (
     <View style={styles.container}>

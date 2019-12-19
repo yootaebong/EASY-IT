@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 // 리스트뷰 아이템
-import ListView from '../../container/ListView';
+import ListView from '../ListView/ListView';
 //axio
 import axios from 'axios';
 //정보
