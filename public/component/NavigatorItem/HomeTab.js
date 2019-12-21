@@ -61,7 +61,7 @@ export default class HomeTab extends React.Component {
             .catch(res => {
                 //더이상 불러올 데이터가 없을 경우 에러 마지막 데이터라는 것을 인식
                 const last = [
-                    { title: "마지막 뉴스입니다.", des: "문의 사항 : ytb4748@gmail.com", creater: "", pubDate: "Developer Bong " }
+                    { title: "마지막 뉴스입니다.", url: "http://bongsu.ga", des: "문의 사항 : ytb4748@gmail.com", creater: "", pubDate: "Developer Bong " }
                 ];
                 current.setState({
                     newsData: current.state.newsData.concat(last),
