@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, FlatList, StyleSheet, TouchableOpacity, Linking, ToastAndroid } from 'react-native';
 import ListItem from './ListItem';
 
-const ListView = ({ itemList }) => (
+// 아이템 뷰
+const ListView = ({ itemList, _getData }) => (
     <View style={styles.container}>
         <FlatList
             data={itemList}
@@ -10,8 +11,7 @@ const ListView = ({ itemList }) => (
                 <TouchableOpacity onPress={() => goToUrl(item.url)}>
                     <ListItem
                         title={item.title}
-                        description={item.des}
-                        img={item.img}
+                        des={item.des}
                         creater={item.creater}
                         pubDate={item.pubDate}
                     />
@@ -19,20 +19,29 @@ const ListView = ({ itemList }) => (
             }
 
             keyExtractor={(item, index) => index.toString()}
+
+            onEndReached={() => { _getData(); }}
+            onEndReachedThreshold={1}
         />
     </View>
 );
 
+
+//가지고 있는 url을 이용해서 웹으로 보내주는 메서드
+let goToUrl = (url) => {
+    // console.log(url);
+    Linking.openURL(url);
+}
+
+//스타일
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
 });
 
-let goToUrl = (url) => {
-    // console.log(url);
-    Linking.openURL(url);
-}
+
+
 
 export default ListView;
 

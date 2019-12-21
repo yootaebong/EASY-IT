@@ -1,6 +1,31 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
+
+//마지막이 아닐 경우 보여줌
+const listItem = ({ title, des, img, creater, pubDate, url }) => (
+
+    <View style={styles.container}>
+        <View style={styles.container_text}>
+            <View style={styles.lic_container}>
+                <Text style={{ flex: 1, fontSize: 8, marginBottom: 5 }}>{dateParser(pubDate)}</Text>
+            </View>
+            <Text style={styles.title}>
+                {title}
+            </Text>
+            <Text style={styles.description}>
+                {des.substring(0, 60) + "..."}
+            </Text>
+
+        </View>
+
+    </View>
+);
+//날짜 데이터를 특이한 포멧을 사용해서 일자만 보여주도록 설정.
+const dateParser = (oriDateFormat) => {
+    return oriDateFormat.split("T")[0];
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -26,7 +51,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         color: '#000',
-        marginBottom: 10
+        marginBottom: 5
     },
     container_text: {
         flex: 1,
@@ -38,32 +63,18 @@ const styles = StyleSheet.create({
     description: {
         fontSize: 10,
         fontStyle: 'italic',
-        marginBottom: 5
+        marginBottom: 0
     },
     lic_container: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
+        alignItems: 'center',
+
     },
 
 });
 
-const ListItem = ({ title, description, img, creater, pubDate, url }) => (
-    <View style={styles.container}>
-        <View style={styles.container_text}>
-            <Text style={styles.title}>
-                {title}
-            </Text>
-            <Text style={styles.description}>
-                {description + "..."}
-            </Text>
-            <View style={styles.lic_container}>
-                <Text style={{ flex: 3, fontSize: 10 }}>{creater}</Text>
-                <Text style={{ flex: 3, fontSize: 10 }}>{pubDate}</Text>
-            </View>
-        </View>
 
-    </View>
-);
 
-export default ListItem;
+export default listItem;
