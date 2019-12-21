@@ -15,7 +15,7 @@ export default class HomeTab extends React.Component {
         this.state = {
             newsData: [],
             skip: 0,
-            limit: 10,
+            limit: 5,
         }
     }
 
