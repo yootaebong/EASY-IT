@@ -3,17 +3,26 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 
 //마지막이 아닐 경우 보여줌
-const listItem = ({ title, des, img, creater, pubDate, url }) => (
-
+const listItem = ({ title, des, pubDate, isRead}) => (
+    
     <View style={styles.container}>
         <View style={styles.container_text}>
             <View style={styles.lic_container}>
-                <Text style={{ flex: 1, fontSize: 8, marginBottom: 5 }}>{dateParser(pubDate)}</Text>
+                <Text style={{ flex: 1, fontSize: 8, marginBottom: 5 ,color: isRead ? '#808080':'#000'ㄴ}}>{dateParser(pubDate)}</Text>
             </View>
-            <Text style={styles.title}>
-                {title}
+            <Text style={{
+                fontSize: 18,
+                marginBottom: 5,
+                color: isRead ? '#808080':'#000',
+            }}>
+                {title} 
             </Text>
-            <Text style={styles.description}>
+            <Text style={{
+                fontSize: 10,
+                fontStyle: 'italic',
+                marginBottom: 0,
+                color: isRead ? '#808080':'#000',
+            }}>
                 {des.substring(0, 60) + "..."}
             </Text>
 
@@ -50,7 +59,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        color: '#000',
         marginBottom: 5
     },
     container_text: {
