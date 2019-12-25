@@ -8,7 +8,7 @@ const listItem = ({ title, des, pubDate, isRead}) => (
     <View style={styles.container}>
         <View style={styles.container_text}>
             <View style={styles.lic_container}>
-                <Text style={{ flex: 1, fontSize: 8, marginBottom: 5 ,color: isRead ? '#808080':'#000'ㄴ}}>{dateParser(pubDate)}</Text>
+                <Text style={{ flex: 1, fontSize: 8, marginBottom: 5 ,color: isRead ? '#808080':'#000'}}>{dateParser(pubDate)}</Text>
             </View>
             <Text style={{
                 fontSize: 18,
