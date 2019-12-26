@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import ListItem from "./ListItem";
 import { AsyncStorage } from "react-native";
-import { Icon } from "native-base";
 // 2019-12-25
 // es5 -> es6 수정
 
@@ -29,6 +28,7 @@ class ListView extends React.Component {
   //로컬 저장소에 저장되어있는 데이터를 가지고 온다.
   UNSAFE_componentWillMount() {
     let current = this;
+    // console.log(this.props.itemList);
     //맨 처음 값을 가지고 옵니다.
     AsyncStorage.getItem(StorageName)
       .then((res, rej) => {
@@ -87,7 +87,7 @@ class ListView extends React.Component {
         stateArray: localArray
       });
 
-      console.log(current.state.stateArray);
+      //   console.log(current.state.stateArray);
     } catch (err) {
       console.log("err : " + err);
     }
@@ -109,6 +109,7 @@ class ListView extends React.Component {
                   creater={item.creater}
                   pubDate={item.pubDate}
                   isRead={this.state.stateArray.includes(item.title)}
+                  url={item.url}
                 />
               </TouchableOpacity>
             </View>

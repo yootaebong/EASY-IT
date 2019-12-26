@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Icon } from "native-base";
 import { AsyncStorage } from "react-native";
+import { NavigationEvents } from "react-navigation";
 
+const splitValue = "-__-";
 //2019-12-26 ex5 -> es6
-const likeDBname = "likeDB";
-const likeArray = [];
 class listItem extends React.Component {
   constructor(props) {
     super(props);
@@ -15,10 +15,15 @@ class listItem extends React.Component {
   }
   //데이터를 전달 받을 때, 로컬 저장소에 접근 한뒤, 좋아요 한 것인지 판단.
   UNSAFE_componentWillReceiveProps() {
-    AsyncStorage.getItem(likeDBname).then((res, rej) => {
+    // console.log(this.props.title);
+    //제목으로 로컬 저장. 없을 경우 북마크 추가 안했다고 판단.
+    AsyncStorage.getItem(this.props.title).then((res, rej) => {
       if (res !== null) {
-        console.log(res);
+        this.setState({
+          isLike: true
+        });
       }
+      //   console.log(res);
     });
   }
   // 좋아요 버튼을 클릭하면 들어오게 되는 메서드.
@@ -26,17 +31,47 @@ class listItem extends React.Component {
   likeBtnClick = () => {
     //좋아요 클릭한 것에 대해서 이미 클릭한 것 이라면, 삭제를 아니라면,추가를 해준다.
     if (!this.state.isLike) {
-        
+      AsyncStorage.setItem(
+        this.props.title,
+        this.props.title +
+          splitValue +
+          this.props.des +
+          splitValue +
+          this.props.pubDate +
+          splitValue +
+          this.props.url +
+          splitValue +
+          new Date().getTime()
+      );
     } else {
+      AsyncStorage.removeItem(this.props.title);
     }
     this.setState({
       isLike: !this.state.isLike
     });
   };
-
+  //포커스가 돌아왔을 때 아이템의 좋아요가 풀렸는지 판단.
+  likedChecker = () => {
+    AsyncStorage.getItem(this.props.title).then((res, rej) => {
+      if (res !== null) {
+        this.setState({
+          isLike: true
+        });
+      } else {
+        this.setState({
+          isLike: false
+        });
+      }
+    });
+  };
   render() {
     return (
       <View style={styles.container}>
+        <NavigationEvents
+          onWillFocus={payload => {
+            this.likedChecker();
+          }}
+        />
         <View style={styles.container_text}>
           <View style={styles.lic_container}>
             <Text
