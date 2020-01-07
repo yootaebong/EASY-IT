@@ -102,16 +102,6 @@ class listItem extends React.Component {
           >
             {this.props.title}
           </Text>
-          <Text
-            style={{
-              fontSize: 10,
-              fontStyle: "italic",
-              marginBottom: 0,
-              color: this.props.isRead ? "#808080" : "#000"
-            }}
-          >
-            {this.props.des.substring(0, 60) + "..."}
-          </Text>
         </View>
       </View>
     );

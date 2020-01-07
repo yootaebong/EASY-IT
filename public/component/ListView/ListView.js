@@ -105,7 +105,6 @@ class ListView extends React.Component {
               >
                 <ListItem
                   title={item.title}
-                  des={item.des}
                   creater={item.creater}
                   pubDate={item.pubDate}
                   isRead={this.state.stateArray.includes(item.title)}
