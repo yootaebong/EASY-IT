@@ -17,7 +17,8 @@
         "image": "./assets/splash.png",
         "resizeMode": "cover"
       },
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.bong.easyit"
     },
     "android": {
       "splash": {
@@ -27,7 +28,8 @@
         "xxhdpi": "./assets/splash.png",
         "xxxhdpi": "./assets/splash.png",
         "resizeMode": "cover"
-      }
+      },
+      "package": "com.bong.easyit"
     }
   }
 }
