@@ -13,5 +13,7 @@ web-report/
 
 assets/*
 privateSet.js
+
+
 # macOS
 .DS_Store

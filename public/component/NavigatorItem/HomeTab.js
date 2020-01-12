@@ -54,7 +54,13 @@ export default class HomeTab extends React.Component {
           "/" +
           current.state.skip +
           "/" +
-          current.state.limit
+          current.state.limit,
+        {
+          headers: {
+            "device-os": Platform.OS,
+            "device-version": Platform.Version
+          }
+        }
       )
       .then(res => {
         // console.log("get_data call");

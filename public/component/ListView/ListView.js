@@ -4,10 +4,13 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Linking
+  Linking,
+  Platform
 } from "react-native";
 import ListItem from "./ListItem";
 import { AsyncStorage } from "react-native";
+import Axios from "axios";
+import { SERVER_IP, SERVER_LOG } from "../../../privateSet";
 // 2019-12-25
 // es5 -> es6 수정
 
@@ -45,6 +48,7 @@ class ListView extends React.Component {
 
   onClick = (url, title) => {
     //url 이동
+    this.saveClickLog(url, title);
     this.goToUrl(url);
     this.loadData(title);
   };
@@ -91,6 +95,17 @@ class ListView extends React.Component {
     } catch (err) {
       console.log("err : " + err);
     }
+  };
+
+  saveClickLog = (url, title) => {
+    Axios.post(SERVER_IP + SERVER_LOG, null, {
+      headers: {
+        "device-os": Platform.OS,
+        "device-version": Platform.Version,
+        "click-url": url,
+        "click-title": title
+      }
+    });
   };
 
   render() {
