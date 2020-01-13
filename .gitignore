@@ -17,3 +17,8 @@ privateSet.js
 
 # macOS
 .DS_Store
+
+
+# native
+android/
+ios/

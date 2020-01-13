@@ -60,9 +60,9 @@ class ListView extends React.Component {
   };
 
   //로컬 스토리지에 접근해서, 기존에 봣던 데이터의 타이틀 값으로 저장.
+
   loadData = async title => {
     let current = this;
-
     //기존에 있던 데이터를 로드한 뒤에, 추가해주는 방향으로 사용.
     try {
       let oldData = await AsyncStorage.getItem(StorageName);
