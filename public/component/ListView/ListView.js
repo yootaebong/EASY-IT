@@ -11,6 +11,8 @@ import ListItem from "./ListItem";
 import { AsyncStorage } from "react-native";
 import Axios from "axios";
 import { SERVER_IP, SERVER_LOG } from "../../../privateSet";
+// 개인 uuid 부여
+import UUID from "react-native-uuid";
 // 2019-12-25
 // es5 -> es6 수정
 
