@@ -27,3 +27,5 @@ IT기사 한번에 모아보기
 ### 구글 개발자 upload.pen 갱신
 
 ### 애플 개발자 등록
+
+### appStore, playStore 등록.
